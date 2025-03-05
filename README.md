@@ -1,6 +1,6 @@
 # 🖨️ ft_printf - Recreating printf()
 
-<img src="https://github.com/user-attachments/assets/b825c089-b281-45b7-9e90-540a74c16d5c" width="500">
+<img src="https://github.com/user-attachments/assets/374a5568-dea3-4594-ab77-8f0ae2bb4eeb" width="500">
 
 ![Score](https://img.shields.io/badge/Score-122%25-brightgreen)  
 📌 **42 School - Core Curriculum Project**  
