@@ -9,45 +9,46 @@ This project provided a deep dive into **variadic functions**, memory management
 
 ```mermaid
 flowchart TB
-    A[Caller code] --> B[ft_printf(format, ...)]
-    B --> C[Init va_list<br/>va_start(args)]
-    C --> D{Scan format string<br/>char by char}
-    
-    D -->|Regular char| E[write char to stdout]
-    E --> F[Increment printed length]
+    A[Caller code] --> B[ft_printf]
+    B --> C[Init variadic args<br/>va_start]
+    C --> D{Scan format string<br/>character by character}
+
+    D -->|Regular character| E[Write character]
+    E --> F[Increment total length]
     F --> D
 
-    D -->|% found| G[Parse conversion]
-    G --> H[Parse flags<br/>- 0 # + space]
-    H --> I[Parse width<br/>number or *]
-    I --> J[Parse precision<br/>.number or .*]
-    J --> K[Parse specifier<br/>c s p d i u x X %]
-    
+    D -->|Percent found| G[Parse conversion]
+    G --> H[Parse flags<br/>minus zero hash plus space]
+    H --> I[Parse width<br/>number or star]
+    I --> J[Parse precision<br/>dot number or dot star]
+    J --> K[Parse specifier<br/>c s p d i u x X percent]
+
     K --> L{Dispatch by specifier}
-    
-    L -->|%c| M1[Fetch arg (int)\nformat char]
-    L -->|%s| M2[Fetch arg (char*)\napply precision (max len)]
-    L -->|%p| M3[Fetch arg (void*)\n0x + hex]
-    L -->|%d/%i| M4[Fetch arg (int)\nsign + precision]
-    L -->|%u| M5[Fetch arg (unsigned)\nprecision]
-    L -->|%x/%X| M6[Fetch arg (unsigned)\nhex + optional prefix (#)]
-    L -->|%%| M7[Literal '%' char]
-    
-    M1 --> N[Build formatted output chunk]
+
+    L -->|c| M1[Fetch argument as int]
+    L -->|s| M2[Fetch argument as char pointer]
+    L -->|p| M3[Fetch argument as void pointer]
+    L -->|d i| M4[Fetch argument as int]
+    L -->|u| M5[Fetch argument as unsigned int]
+    L -->|x X| M6[Fetch argument as unsigned int]
+    L -->|percent| M7[Use literal percent character]
+
+    M1 --> N[Build formatted chunk]
     M2 --> N
     M3 --> N
     M4 --> N
     M5 --> N
     M6 --> N
     M7 --> N
-    
-    N --> O[Apply width & alignment<br/>padding: spaces/zeros]
-    O --> P[write() buffer/chars]
-    P --> Q[Update total length]
-    Q --> D
 
-    D -->|End of string| R[va_end(args)]
-    R --> S[Return total printed length]
+    N --> O[Apply precision and sign rules]
+    O --> P[Apply width and alignment<br/>padding spaces or zeros]
+    P --> Q[Write output]
+    Q --> R[Update total length]
+    R --> D
+
+    D -->|End of string| S[End variadic args<br/>va_end]
+    S --> T[Return total printed length]
 
 ```
 
