@@ -6,7 +6,7 @@
 ## ▌ Description
 The goal of this project is to **reimplement** the standard C `printf()` function from scratch.  
 This project provided a deep dive into **variadic functions**, memory management, and formatted output handling.
-<!-- <img width="1517" height="1643" alt="image" src="https://github.com/user-attachments/assets/5e9f4bf4-394e-4bae-9bba-11281808675a" /> -->
+<img src="assets/overview.png" alt="ft_printf — overview" width="760">
 
 ```mermaid
 flowchart TB
