@@ -8,7 +8,9 @@ The goal of this project is to **reimplement** the standard C `printf()` functio
 This project provided a deep dive into **variadic functions**, memory management, and formatted output handling.
 <img src="assets/overview.png" alt="ft_printf — overview" width="760">
 
-<!-- Old diagram, kept for reference; the overview image above replaces it.
+<details>
+<summary>Old diagram (mermaid)</summary>
+
 ```mermaid
 flowchart TB
     A[Caller code] --> B[ft_printf]
@@ -53,7 +55,8 @@ flowchart TB
     S --> T[Return total printed length]
 
 ```
--->
+
+</details>
 
 
 ## ▌ Objectives
